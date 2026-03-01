@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DEV AND TRADE SRL | Distribuzione e Logistica</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+--color-bg: #f8f8f8;
+--color-surface: #ffffff;
+--color-text-main: #1a1a1a;
+--color-text-muted: #666666;
+--color-primary: #2d2d2d;
+--color-border: #e0e0e0;
+--color-accent: #f0ebd8;
+--radius-sm: 8px;
+--radius-md: 16px;
+--radius-lg: 24px;
+--transition-speed: 0.3s;
+--font-family: 'Inter', sans-serif;
+}
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+body {
+font-family: var(--font-family);
+background-color: var(--color-bg);
+color: var(--color-text-main);
+line-height: 1.6;
+overflow-x: hidden;
+}
+a {
+text-decoration: none;
+color: inherit;
+transition: color var(--transition-speed) ease;
+}
+ul {
+list-style: none;
+}
+img {
+max-width: 100%;
+height: auto;
+display: block;
+}
+h1, h2, h3, h4, h5, h6 {
+font-weight: 600;
+line-height: 1.2;
+}
+.container {
+width: 100%;
+max-width: 1440px;
+margin: 0 auto;
+padding: 0 5%;
+}
+header {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+background-color: rgba(255, 255, 255, 0.95);
+backdrop-filter: blur(10px);
+z-index: 1000;
+border-bottom: 1px solid var(--color-border);
+transition: all var(--transition-speed) ease;
+}
+.header-inner {
+display: flex;
+justify-content: space-between;
+align-items: center;
+height: 80px;
+}
+.logo {
+font-size: 1.2rem;
+font-weight: 700;
+letter-spacing: -0.5px;
+text-transform: uppercase;
+display: flex;
+align-items: center;
+gap: 10px;
+}
+.logo svg {
+width: 24px;
+height: 24px;
+}
+.nav-links {
+display: flex;
+gap: 40px;
+}
+.nav-links a {
+font-size: 0.9rem;
+font-weight: 500;
+color: var(--color-text-muted);
+}
+.nav-links a:hover {
+color: var(--color-text-main);
+}
+.btn {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+padding: 12px 28px;
+background-color: var(--color-primary);
+color: var(--color-surface);
+border: none;
+border-radius: 50px;
+font-size: 0.9rem;
+font-weight: 500;
+cursor: pointer;
+transition: all var(--transition-speed) ease;
+}
+.btn:hover {
+background-color: #000000;
+transform: translateY(-2px);
+}
+.btn-outline {
+background-color: transparent;
+color: var(--color-primary);
+border: 1px solid var(--color-primary);
+}
+.btn-outline:hover {
+background-color: var(--color-primary);
+color: var(--color-surface);
+}
+section {
+padding: 120px 0;
+}
+.section-header {
+margin-bottom: 60px;
+text-align: center;
+max-width: 700px;
+margin-left: auto;
+margin-right: auto;
+}
+.section-subtitle {
+font-size: 0.85rem;
+text-transform: uppercase;
+letter-spacing: 2px;
+color: var(--color-text-muted);
+margin-bottom: 16px;
+display: block;
+}
+.section-title {
+font-size: 2.5rem;
+margin-bottom: 24px;
+}
+.hero {
+min-height: 100vh;
+display: flex;
+align-items: center;
+padding-top: 80px;
+position: relative;
+background-color: var(--color-surface);
+}
+.hero-grid {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 60px;
+align-items: center;
+}
+.hero-content {
+max-width: 600px;
+}
+.hero-title {
+font-size: 4rem;
+font-weight: 700;
+letter-spacing: -1px;
+margin-bottom: 24px;
+line-height: 1.1;
+}
+.hero-desc {
+font-size: 1.1rem;
+color: var(--color-text-muted);
+margin-bottom: 40px;
+}
+.hero-visual {
+position: relative;
+border-radius: var(--radius-lg);
+overflow: hidden;
+box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+}
+.hero-visual img {
+width: 100%;
+height: 700px;
+object-fit: cover;
+}
+.about {
+background-color: var(--color-bg);
+}
+.about-grid {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 80px;
+align-items: center;
+}
+.about-text p {
+font-size: 1.1rem;
+color: var(--color-text-muted);
+margin-bottom: 20px;
+}
+.about-text p:last-child {
+margin-bottom: 0;
+}
+.about-image {
+border-radius: var(--radius-lg);
+overflow: hidden;
+}
+.services {
+background-color: var(--color-surface);
+}
+.grid-3 {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 40px;
+}
+.card {
+background-color: var(--color-bg);
+padding: 40px;
+border-radius: var(--radius-md);
+transition: transform var(--transition-speed) ease;
+}
+.card:hover {
+transform: translateY(-10px);
+}
+.card-icon {
+width: 60px;
+height: 60px;
+background-color: var(--color-surface);
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+margin-bottom: 24px;
+box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+.card-icon svg {
+width: 24px;
+height: 24px;
+color: var(--color-primary);
+}
+.card-title {
+font-size: 1.25rem;
+margin-bottom: 16px;
+}
+.card-desc {
+font-size: 0.95rem;
+color: var(--color-text-muted);
+}
+.advantages {
+background-color: var(--color-accent);
+}
+.advantages .card {
+background-color: var(--color-surface);
+}
+.process {
+background-color: var(--color-surface);
+}
+.process-steps {
+display: flex;
+justify-content: space-between;
+position: relative;
+}
+.process-steps::before {
+content: '';
+position: absolute;
+top: 40px;
+left: 50px;
+right: 50px;
+height: 2px;
+background-color: var(--color-border);
+z-index: 1;
+}
+.step {
+position: relative;
+z-index: 2;
+text-align: center;
+width: 30%;
+}
+.step-number {
+width: 80px;
+height: 80px;
+background-color: var(--color-primary);
+color: var(--color-surface);
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 1.5rem;
+font-weight: 700;
+margin: 0 auto 24px auto;
+border: 8px solid var(--color-surface);
+}
+.step-title {
+font-size: 1.2rem;
+margin-bottom: 16px;
+}
+.step-desc {
+font-size: 0.9rem;
+color: var(--color-text-muted);
+}
+footer {
+background-color: var(--color-primary);
+color: var(--color-surface);
+padding: 100px 0 40px 0;
+}
+.footer-grid {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 60px;
+margin-bottom: 80px;
+}
+.footer-info h2 {
+font-size: 2.5rem;
+margin-bottom: 24px;
+}
+.footer-contact {
+display: flex;
+flex-direction: column;
+gap: 24px;
+}
+.contact-item {
+display: flex;
+align-items: flex-start;
+gap: 16px;
+}
+.contact-item svg {
+width: 24px;
+height: 24px;
+opacity: 0.7;
+flex-shrink: 0;
+}
+.contact-item p {
+font-size: 1.1rem;
+color: rgba(255,255,255,0.8);
+}
+.footer-bottom {
+border-top: 1px solid rgba(255,255,255,0.1);
+padding-top: 40px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+font-size: 0.9rem;
+color: rgba(255,255,255,0.6);
+}
+.modal-overlay {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-color: rgba(0,0,0,0.6);
+backdrop-filter: blur(5px);
+display: flex;
+align-items: center;
+justify-content: center;
+z-index: 2000;
+opacity: 0;
+visibility: hidden;
+transition: all var(--transition-speed) ease;
+}
+.modal-overlay.active {
+opacity: 1;
+visibility: visible;
+}
+.modal-content {
+background-color: var(--color-surface);
+width: 100%;
+max-width: 500px;
+border-radius: var(--radius-lg);
+padding: 40px;
+position: relative;
+transform: translateY(20px);
+transition: all var(--transition-speed) ease;
+}
+.modal-overlay.active .modal-content {
+transform: translateY(0);
+}
+.modal-close {
+position: absolute;
+top: 24px;
+right: 24px;
+background: none;
+border: none;
+cursor: pointer;
+color: var(--color-text-muted);
+}
+.modal-close:hover {
+color: var(--color-text-main);
+}
+.modal-title {
+font-size: 1.8rem;
+margin-bottom: 8px;
+}
+.modal-desc {
+color: var(--color-text-muted);
+margin-bottom: 32px;
+font-size: 0.95rem;
+}
+.form-group {
+margin-bottom: 20px;
+}
+.form-label {
+display: block;
+font-size: 0.85rem;
+font-weight: 500;
+margin-bottom: 8px;
+color: var(--color-text-main);
+}
+.form-input {
+width: 100%;
+padding: 14px 16px;
+border: 1px solid var(--color-border);
+border-radius: var(--radius-sm);
+font-family: var(--font-family);
+font-size: 1rem;
+background-color: var(--color-bg);
+transition: border-color var(--transition-speed) ease;
+}
+.form-input:focus {
+outline: none;
+border-color: var(--color-primary);
+}
+textarea.form-input {
+resize: vertical;
+min-height: 120px;
+}
+.success-icon {
+width: 80px;
+height: 80px;
+background-color: #e8f5e9;
+color: #2e7d32;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+margin: 0 auto 24px auto;
+}
+.success-icon svg {
+width: 40px;
+height: 40px;
+}
+.text-center {
+text-align: center;
+}
+@media (max-width: 1024px) {
+.hero-title {
+font-size: 3rem;
+}
+.hero-grid, .about-grid, .footer-grid {
+grid-template-columns: 1fr;
+gap: 40px;
+}
+.hero-visual img {
+height: 500px;
+}
+.grid-3 {
+grid-template-columns: repeat(2, 1fr);
+}
+}
+@media (max-width: 768px) {
+.nav-links {
+display: none;
+}
+.hero-title {
+font-size: 2.5rem;
+}
+.grid-3 {
+grid-template-columns: 1fr;
+}
+.process-steps {
+flex-direction: column;
+gap: 40px;
+}
+.process-steps::before {
+display: none;
+}
+.step {
+width: 100%;
+}
+.footer-bottom {
+flex-direction: column;
+gap: 20px;
+text-align: center;
+}
+}
+</style>
+</head>
+<body>
+
+<header id="header">
+<div class="container header-inner">
+<div class="logo">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+<polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+<line x1="12" y1="22.08" x2="12" y2="12"></line>
+</svg>
+DEV AND TRADE
+</div>
+<nav class="nav-links">
+<a href="#home">Home</a>
+<a href="#about">Chi Siamo</a>
+<a href="#services">Servizi</a>
+<a href="#advantages">Vantaggi</a>
+<a href="#process">Processo</a>
+</nav>
+<button class="btn" onclick="openModal('contactModal')">Contattaci</button>
+</div>
+</header>
+
+<main>
+<section id="home" class="hero">
+<div class="container hero-grid">
+<div class="hero-content">
+<h1 class="hero-title">Distribuzione Globale, Efficienza Digitale</h1>
+<p class="hero-desc">Ottimizziamo la fornitura all'ingrosso e il commercio al dettaglio di merci generali attraverso soluzioni logistiche e tecnologiche all'avanguardia per ipermercati e club di magazzino.</p>
+<button class="btn" onclick="openModal('contactModal')">Inizia la Collaborazione</button>
+</div>
+<div class="hero-visual">
+<img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Warehouse and Logistics Modern Facility">
+</div>
+</div>
+</section>
+
+<section id="about" class="about">
+<div class="container">
+<div class="section-header text-center">
+<span class="section-subtitle">L'Evoluzione del Commercio</span>
+<h2 class="section-title">Chi Siamo</h2>
+</div>
+<div class="about-grid">
+<div class="about-image">
+<img src="https://images.unsplash.com/photo-1553413077-190dd305871c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Corporate Office Analytics">
+</div>
+<div class="about-text">
+<p>DEV AND TRADE SRL rappresenta il punto di incontro definitivo tra la distribuzione su larga scala e l'innovazione tecnologica. Fondata e stabilita in Italia, la nostra azienda si specializza nella gestione complessa di centri di distribuzione, ipermercati e retailer di merci generali.</p>
+<p>Non ci limitiamo a spostare merci; analizziamo enormi volumi di dati di mercato per prevedere le tendenze e ottimizzare le forniture. Il nostro approccio nativo digitale e basato sull'IT garantisce una gestione dell'inventario senza interruzioni e una drastica riduzione degli sprechi strutturali.</p>
+<p>Collaboriamo attivamente con marchi globali per assicurare una presenza capillare e strategica sul mercato internazionale. La nostra missione costante è ridefinire gli standard operativi del commercio al dettaglio moderno attraverso precisione, software proprietari e logistica avanzata.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="services" class="services">
+<div class="container">
+<div class="section-header">
+<span class="section-subtitle">Soluzioni di Rete</span>
+<h2 class="section-title">I Nostri Servizi</h2>
+</div>
+<div class="grid-3">
+<div class="card">
+<div class="card-icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+<line x1="8" y1="21" x2="16" y2="21"></line>
+<line x1="12" y1="17" x2="12" y2="21"></line>
+</svg>
+</div>
+<h3 class="card-title">Fornitura GDO Strutturata</h3>
+<p class="card-desc">Gestiamo l'approvvigionamento massivo specificamente per ipermercati e club di magazzino. Utilizziamo algoritmi predittivi proprietari per ottimizzare i livelli di scorte e ridurre gli invenduti. La nostra rete di distribuzione garantisce consegne tempestive e qualità costante su vasta scala.</p>
+</div>
+<div class="card">
+<div class="card-icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<circle cx="12" cy="12" r="10"></circle>
+<line x1="2" y1="12" x2="22" y2="12"></line>
+<path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+</svg>
+</div>
+<h3 class="card-title">Integrazione E-commerce</h3>
+<p class="card-desc">Colleghiamo fluidamente i magazzini fisici tradizionali con le più moderne piattaforme di vendita online. Forniamo infrastrutture IT scalabili per il tracciamento in tempo reale delle merci generali ovunque si trovino. Questo approccio omnicanale ibrido massimizza le conversioni e la soddisfazione del cliente finale.</p>
+</div>
+<div class="card">
+<div class="card-icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+</svg>
+</div>
+<h3 class="card-title">Analisi Mercato e Merchandising</h3>
+<p class="card-desc">Elaboriamo in tempo reale i dati di vendita per posizionare strategicamente i prodotti all'interno dei supercentri fisici. Creiamo layout visivi e percorsi logici che guidano e influenzano positivamente il comportamento d'acquisto. Il risultato diretto è un incremento misurabile e sostenibile del turnover delle merci.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="advantages" class="advantages">
+<div class="container">
+<div class="section-header text-center">
+<span class="section-subtitle">Il Nostro Vantaggio Competitivo</span>
+<h2 class="section-title">Perché Sceglierci</h2>
+</div>
+<div class="grid-3">
+<div class="card">
+<div class="card-icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+<polyline points="7.5 4.21 12 6.81 16.5 4.21"></polyline>
+<polyline points="7.5 19.79 7.5 14.6 3 12"></polyline>
+<polyline points="21 12 16.5 14.6 16.5 19.79"></polyline>
+<polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+<line x1="12" y1="22.08" x2="12" y2="12"></line>
+</svg>
+</div>
+<h3 class="card-title">Infrastruttura Tecnologica</h3>
+<p class="card-desc">Implementiamo sistemi cloud proprietari avanzati per il monitoraggio end-to-end della catena di approvvigionamento, garantendo trasparenza totale sui dati.</p>
+</div>
+<div class="card">
+<div class="card-icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+<polyline points="2 17 12 22 22 17"></polyline>
+<polyline points="2 12 12 17 22 12"></polyline>
+</svg>
+</div>
+<h3 class="card-title">Copertura Globale Estesa</h3>
+<p class="card-desc">Disponiamo di una rete logistica consolidata che collega i principali hub commerciali europei ed internazionali, riducendo drasticamente i tempi di transito.</p>
+</div>
+<div class="card">
+<div class="card-icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<circle cx="12" cy="12" r="3"></circle>
+<path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+</svg>
+</div>
+<h3 class="card-title">Adattabilità Operativa</h3>
+<p class="card-desc">I nostri processi sono strutturati per essere altamente flessibili, capaci di gestire picchi di domanda imprevisti e variazioni di mercato stagionali repentine.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="process" class="process">
+<div class="container">
+<div class="section-header text-center">
+<span class="section-subtitle">Il Processo Operativo</span>
+<h2 class="section-title">Come Lavoriamo</h2>
+</div>
+<div class="process-steps">
+<div class="step">
+<div class="step-number">1</div>
+<h3 class="step-title">Analisi dei Dati</h3>
+<p class="step-desc">Iniziamo con una profonda valutazione delle esigenze del cliente, incrociando questi parametri con lo studio analitico delle metriche di mercato attuali.</p>
+</div>
+<div class="step">
+<div class="step-number">2</div>
+<h3 class="step-title">Pianificazione Strategica</h3>
+<p class="step-desc">Sviluppiamo un piano di distribuzione hardware e software altamente personalizzato, procedendo con una precisa allocazione delle risorse necessarie.</p>
+</div>
+<div class="step">
+<div class="step-number">3</div>
+<h3 class="step-title">Esecuzione e Monitoraggio</h3>
+<p class="step-desc">Implementiamo l'architettura logistica con un tracciamento continuo, applicando protocolli di ottimizzazione e correzione in tempo reale.</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+
+<footer>
+<div class="container">
+<div class="footer-grid">
+<div class="footer-info">
+<h2>Pronto per scalare le tue operazioni?</h2>
+<p style="color: rgba(255,255,255,0.8); margin-bottom: 30px; max-width: 400px;">Contattaci oggi per discutere come le nostre infrastrutture possono ottimizzare la tua catena di fornitura.</p>
+<button class="btn btn-outline" style="border-color: rgba(255,255,255,0.3); color: white;" onclick="openModal('contactModal')">Richiedi Consulto</button>
+</div>
+<div class="footer-contact">
+<div class="contact-item">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+<circle cx="12" cy="10" r="3"></circle>
+</svg>
+<div>
+<p style="font-size: 0.85rem; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px;">Sede Operativa</p>
+<p>VIA PAPA GIOVANNI XXIII 1<br>FRATTAMINORE, 80020 Italy</p>
+</div>
+</div>
+<div class="contact-item">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+<polyline points="22,6 12,13 2,6"></polyline>
+</svg>
+<div>
+<p style="font-size: 0.85rem; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px;">Comunicazioni Elettroniche</p>
+<p>page@devandtrade.info</p>
+</div>
+</div>
+</div>
+</div>
+<div class="footer-bottom">
+<p>&copy; 2026 DEV AND TRADE SRL. Tutti i diritti riservati.</p>
+<div style="display: flex; gap: 20px;">
+</div>
+</div>
+</div>
+</footer>
+
+<div class="modal-overlay" id="contactModal">
+<div class="modal-content">
+<button class="modal-close" onclick="closeModal('contactModal')">
+<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<line x1="18" y1="6" x2="6" y2="18"></line>
+<line x1="6" y1="6" x2="18" y2="18"></line>
+</svg>
+</button>
+<h3 class="modal-title">Contatta la Direzione</h3>
+<p class="modal-desc">Compila i campi sottostanti per richiedere informazioni o avviare una partnership strategica.</p>
+<form id="contactForm">
+<div class="form-group">
+<label class="form-label" for="name">Nome Completo / Azienda</label>
+<input type="text" id="name" class="form-input" required>
+</div>
+<div class="form-group">
+<label class="form-label" for="email">Indirizzo Email Aziendale</label>
+<input type="email" id="email" class="form-input" required>
+</div>
+<div class="form-group">
+<label class="form-label" for="subject">Oggetto della Richiesta</label>
+<input type="text" id="subject" class="form-input" required>
+</div>
+<div class="form-group">
+<label class="form-label" for="message">Dettagli Operativi</label>
+<textarea id="message" class="form-input" required></textarea>
+</div>
+<button type="submit" class="btn" style="width: 100%;">Invia Richiesta Ufficiale</button>
+</form>
+</div>
+</div>
+
+<div class="modal-overlay" id="successModal">
+<div class="modal-content text-center">
+<button class="modal-close" onclick="closeModal('successModal')">
+<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<line x1="18" y1="6" x2="6" y2="18"></line>
+<line x1="6" y1="6" x2="18" y2="18"></line>
+</svg>
+</button>
+<div class="success-icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<polyline points="20 6 9 17 4 12"></polyline>
+</svg>
+</div>
+<h3 class="modal-title">Trasmissione Completata</h3>
+<p class="modal-desc" style="margin-bottom: 0;">Il tuo messaggio è stato registrato nei nostri sistemi. Un nostro analista ti contatterà all'indirizzo email fornito nel più breve tempo possibile.</p>
+</div>
+</div>
+
+<script>
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+anchor.addEventListener('click', function (e) {
+e.preventDefault();
+const targetId = this.getAttribute('href');
+if(targetId === '#') return;
+const targetElement = document.querySelector(targetId);
+if(targetElement) {
+const headerOffset = 80;
+const elementPosition = targetElement.getBoundingClientRect().top;
+const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+window.scrollTo({
+top: offsetPosition,
+behavior: 'smooth'
+});
+}
+});
+});
+
+window.addEventListener('scroll', () => {
+const header = document.getElementById('header');
+if (window.scrollY > 50) {
+header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.05)';
+} else {
+header.style.boxShadow = 'none';
+}
+});
+
+function openModal(modalId) {
+const modal = document.getElementById(modalId);
+modal.classList.add('active');
+document.body.style.overflow = 'hidden';
+}
+
+function closeModal(modalId) {
+const modal = document.getElementById(modalId);
+modal.classList.remove('active');
+document.body.style.overflow = 'auto';
+}
+
+document.querySelectorAll('.modal-overlay').forEach(overlay => {
+overlay.addEventListener('click', function(e) {
+if (e.target === this) {
+closeModal(this.id);
+}
+});
+});
+
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+e.preventDefault();
+closeModal('contactModal');
+setTimeout(() => {
+openModal('successModal');
+this.reset();
+}, 400);
+});
+</script>
+</body>
+</html>
